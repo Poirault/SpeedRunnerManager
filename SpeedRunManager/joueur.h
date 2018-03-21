@@ -9,6 +9,7 @@ class Joueur : public QObject
 public:
     Joueur();
 private:
+
 };
 
 #endif // JOUEUR_H

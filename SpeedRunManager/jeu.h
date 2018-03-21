@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-class Jeu : public QObject
+class Jeu:public QObject
 {
 public:
     Jeu();

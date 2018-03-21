@@ -2,7 +2,5 @@
 
 Run::Run()
 {
-    Run::Run(){
 
-    }
 }
