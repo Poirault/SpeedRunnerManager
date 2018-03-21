@@ -16,6 +16,9 @@ private:
     QTime chrono;
     Joueur joueur;
     Level level;
+public:
+    startRun();
+    stopRun();
 };
 
 #endif // RUN_H

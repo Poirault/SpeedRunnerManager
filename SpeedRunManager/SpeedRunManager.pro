@@ -29,14 +29,16 @@ SOURCES += \
     joueur.cpp \
     run.cpp \
     jeu.cpp \
-    level.cpp
+    level.cpp \
+    nation.cpp
 
 HEADERS += \
         mainwindow.h \
     joueur.h \
     run.h \
     jeu.h \
-    level.h
+    level.h \
+    nation.h
 
 FORMS += \
         mainwindow.ui
