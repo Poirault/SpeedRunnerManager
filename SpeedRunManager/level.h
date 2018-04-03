@@ -13,7 +13,7 @@ public:
     QList<QString> checkpoints;
     QList<QTime> WR;
 public:
-    Level();
+    Level(QString name);
 
 };
 

@@ -33,7 +33,7 @@ SOURCES += \
     nation.cpp \
     notification.cpp \
     display.cpp \
-    clasement.cpp
+    classement.cpp
 
 
 HEADERS += \
@@ -45,7 +45,7 @@ HEADERS += \
     nation.h \
     notification.h \
     display.h \
-    clasement.h
+    classement.h
 
 
 FORMS += \
