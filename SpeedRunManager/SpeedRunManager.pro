@@ -31,10 +31,8 @@ SOURCES += \
     jeu.cpp \
     level.cpp \
     nation.cpp \
-
     notification.cpp \
-    display.cpp
-
+    display.cpp \
     clasement.cpp
 
 
@@ -45,9 +43,8 @@ HEADERS += \
     jeu.h \
     level.h \
     nation.h \
-
     notification.h \
-    display.h
+    display.h \
     clasement.h
 
 

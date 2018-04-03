@@ -25,6 +25,6 @@ public:
     void stopRun();
 
     void drapeau();
-
+};
 
 #endif // RUN_H
