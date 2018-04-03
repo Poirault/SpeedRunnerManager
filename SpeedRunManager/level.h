@@ -1,7 +1,8 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include "jeu.h"
+#include <QObject>
+#include <QDate>
 
 
 class Level:public QObject
@@ -9,8 +10,8 @@ class Level:public QObject
 public:
     QString nom;
     QString dificulte;
-    QString * checkpoints;
-    QTime * WR;
+    QList<QString> checkpoints;
+    QList<QTime> * WR;
 public:
     Level();
 
