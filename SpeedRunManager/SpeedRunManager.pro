@@ -30,7 +30,8 @@ SOURCES += \
     run.cpp \
     jeu.cpp \
     level.cpp \
-    nation.cpp
+    nation.cpp \
+    clasement.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +39,8 @@ HEADERS += \
     run.h \
     jeu.h \
     level.h \
-    nation.h
+    nation.h \
+    clasement.h
 
 FORMS += \
         mainwindow.ui

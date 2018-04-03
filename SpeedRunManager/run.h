@@ -14,11 +14,11 @@ public:
     Run();
 private:
     QTime chrono;
-    Joueur joueur;
-    Level level;
+    Joueur *  joueur;
+    Level * level;
 public:
-    startRun();
-    stopRun();
+    void startRun();
+    void stopRun();
 };
 
 #endif // RUN_H
