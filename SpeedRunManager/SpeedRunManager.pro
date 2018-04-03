@@ -31,8 +31,12 @@ SOURCES += \
     jeu.cpp \
     level.cpp \
     nation.cpp \
+
     notification.cpp \
     display.cpp
+
+    clasement.cpp
+
 
 HEADERS += \
         mainwindow.h \
@@ -41,8 +45,11 @@ HEADERS += \
     jeu.h \
     level.h \
     nation.h \
+
     notification.h \
     display.h
+    clasement.h
+
 
 FORMS += \
         mainwindow.ui

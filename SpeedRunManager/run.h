@@ -13,6 +13,7 @@ class Run : public QObject
 public:
     Run(Joueur joueur, Level level);
 private:
+
     QTime _chrono;
     Joueur * _joueur;
     Level * _level;
@@ -24,6 +25,6 @@ public:
     void stopRun();
 
     void drapeau();
-};
+
 
 #endif // RUN_H

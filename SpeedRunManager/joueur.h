@@ -10,10 +10,14 @@
 class Joueur : public Nation
 {
 public:
-    Joueur();
+    Joueur(QString);
+    Joueur(QString,QDate);
+    void rename(QString);
+    void newfavorite(Jeu);
+    void rebirth(QDate);
 private:
     QString nom;
-    Jeu jeu_prefere;
+    Jeu * jeu_prefere;
     QDate date_naissance;
 
 };
