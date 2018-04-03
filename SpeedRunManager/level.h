@@ -4,9 +4,10 @@
 #include "jeu.h"
 
 
-class Level:public Jeu
+class Level:public QObject
 {
 public:
+    QString nom;
     QString dificulte;
     QString * checkpoints;
     QTime * WR;

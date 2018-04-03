@@ -7,10 +7,10 @@
 class Jeu:public QObject
 {
 public:
-    QString name;
-    QDate dateDeSortie;
+    QString _name;
+    QDate _dateDeSortie;
 public:
-    Jeu();
+    Jeu(QString name, QDate dateDeSortie);
 };
 
 #endif // JEU_H

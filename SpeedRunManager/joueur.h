@@ -15,6 +15,7 @@ private:
     QString nom;
     Jeu jeu_prefere;
     QDate date_naissance;
+
 };
 
 #endif // JOUEUR_H

@@ -30,7 +30,9 @@ SOURCES += \
     run.cpp \
     jeu.cpp \
     level.cpp \
-    nation.cpp
+    nation.cpp \
+    notification.cpp \
+    display.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +40,9 @@ HEADERS += \
     run.h \
     jeu.h \
     level.h \
-    nation.h
+    nation.h \
+    notification.h \
+    display.h
 
 FORMS += \
         mainwindow.ui
