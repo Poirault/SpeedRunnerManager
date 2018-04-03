@@ -11,7 +11,7 @@ public:
     QString nom;
     QString dificulte;
     QList<QString> checkpoints;
-    QList<QTime> * WR;
+    QList<QTime> WR;
 public:
     Level();
 
