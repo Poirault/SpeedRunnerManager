@@ -7,6 +7,10 @@
 class Level:public Jeu
 {
 public:
+    QString dificulte;
+    QString * checkpoints;
+    QTime * WR;
+public:
     Level();
 
 };
