@@ -8,3 +8,7 @@ Run::Run(Joueur joueur,Level level):
     _date(QDateTime::currentDateTime())
 {
 }
+
+void Run::startRun(){
+
+}
