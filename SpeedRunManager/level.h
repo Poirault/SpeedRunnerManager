@@ -8,12 +8,11 @@
 class Level:public QObject
 {
 public:
+    Level(QString name);
     QString nom;
     QString dificulte;
     QList<QString> checkpoints;
     QList<QTime> WR;
-public:
-    Level(QString name);
 
 };
 

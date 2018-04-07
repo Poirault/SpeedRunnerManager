@@ -9,6 +9,8 @@ Run::Run(Joueur joueur,Level level):
 {
 }
 
-void Run::startRun(){
-
+QProcess* Run::startRun(QString GamePath){
+    QProcess* game = new QProcess(this);
+    game->start(GamePath, QStringList() << "");
+    return game;
 }

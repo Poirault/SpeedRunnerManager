@@ -6,6 +6,8 @@
 #include "joueur.h"
 #include "level.h"
 #include <QDateTime>
+#include <QProcess>
+#include <QApplication>
 
 
 class Run : public QObject
@@ -20,7 +22,7 @@ private:
     QDateTime _date;
 public:
     // Doit pouvoir lancer un run, et si on le souhaite en comparant à un autre (QTimer)
-    void startRun();
+    QProcess* startRun(QString GamePath);
 
     void stopRun();
 
