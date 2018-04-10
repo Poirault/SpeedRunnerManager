@@ -1,5 +1,14 @@
+/*!
+ * \class Display display.h
+ * \brief gére l'affichage et le model
+ */
 #include "display.h"
 
+
+/*!
+ * \brief Display::Display constucteur de base
+ * \param parent
+ */
 Display::Display(QWidget* parent)
     : QDialog(parent)
 {
@@ -32,7 +41,9 @@ void Display::selectGame(QModelIndex selection){
     jeux->currentGame = selection.data().toString();
 }
 
-
+/*!
+ * \brief Display::setup 
+ */
 void Display::setup()
 {
     vbox = new QVBoxLayout;

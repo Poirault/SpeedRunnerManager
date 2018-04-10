@@ -1,6 +1,13 @@
+/*!
+ * \class Joueur joueur.h
+ * \brief la class joueur est une liste des joueurs
+ */
+
 #include "joueur.h"
 
-
+/*!
+ * \brief Joueur::Joueur constructeur de base
+ */
 Joueur::Joueur()
 {
     count = 0;
@@ -21,8 +28,18 @@ void Joueur::rebirth(QDate birth){
     date_naissance.setDate(a,b,c);
 }
 
-
+/*!
+ * \brief Joueur::rowCount
+ * \return nombre de joueurs
+ */
 int Joueur::rowCount(const QModelIndex & /* parent */)const{return count;}
+
+/*!
+ * \brief Joueur::data
+ * \param index
+ * \param role
+ * \return 
+ */
 QVariant Joueur::data(const QModelIndex &index, int role)const
 {
     if (!index.isValid())
