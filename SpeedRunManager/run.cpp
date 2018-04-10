@@ -1,5 +1,11 @@
+/*!
+ * \class Run run.h
+ */
 #include "run.h"
 
+/*!
+ * \brief Run::Run constructeur de base
+ */
 Run::Run()
 {
     count = 0;
@@ -11,7 +17,17 @@ Run::Run()
    // return game;
 //}
 
+/*!
+ * \brief Run::rowCount
+ * \return 
+ */
 int Run::rowCount(const QModelIndex & /* parent */)const{return count;}
+/*!
+ * \brief Run::data
+ * \param index
+ * \param role
+ * \return 
+ */
 QVariant Run::data(const QModelIndex &index, int role)const
 {
     if (!index.isValid())
@@ -32,6 +48,10 @@ QVariant Run::data(const QModelIndex &index, int role)const
     return QVariant();
 }
 
+/*!
+ * \brief Run::startRun slot
+ * \param currentPath
+ */
 void Run::startRun(QString currentPath){
     QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
     itemList.append(currentPath);
