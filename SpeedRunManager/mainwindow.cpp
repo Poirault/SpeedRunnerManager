@@ -1,14 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow()
 {
-    ui->setupUi(this);
+    display = new Display;
+    setCentralWidget(display);
+
+    setWindowTitle(tr("SpeedRunMannager"));
 }
 
-MainWindow::~MainWindow()
+
+void MainWindow::updateActions(const QItemSelection &selection)
 {
-    delete ui;
+    QModelIndexList indexes = selection.indexes();
 }
+
+

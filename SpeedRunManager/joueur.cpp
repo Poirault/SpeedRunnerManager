@@ -1,16 +1,11 @@
 #include "joueur.h"
 
 
-Joueur::Joueur(QString name)
+Joueur::Joueur()
 {
-    this->nom=name;
-    this->date_naissance=QDate::currentDate();
-    this->jeu_prefere=NULL;
+    count = 0;
 }
 
-Joueur::Joueur(QString name, QDate birth):nom(name),date_naissance(birth),jeu_prefere(NULL){
-
-}
 
 void Joueur::rename(QString name){
     this->nom=name;
@@ -26,3 +21,26 @@ void Joueur::rebirth(QDate birth){
     date_naissance.setDate(a,b,c);
 }
 
+
+int Joueur::rowCount(const QModelIndex & /* parent */)const{return count;}
+QVariant Joueur::data(const QModelIndex &index, int role)const
+{
+    if (!index.isValid())
+            return QVariant();
+
+    if (index.row() >= itemList.size() || index.row() < 0)
+        return QVariant();
+
+    if (role == Qt::DisplayRole) {
+        return itemList.at(index.row());
+    } else if (role == Qt::BackgroundRole) {
+        int batch = (index.row() / 100) % 2;
+        if (batch == 0)
+            return qApp->palette().base();
+        else
+            return qApp->palette().alternateBase();
+    }
+    return QVariant();
+}
+
+void Joueur::newPseudo(){}

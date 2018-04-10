@@ -8,25 +8,52 @@
 #include <QDateTime>
 #include <QProcess>
 #include <QApplication>
+#include <QAbstractTableModel>
+#include <QAbstractListModel>
+#include <QVariant>
+#include <QApplication>
+#include <QPalette>
 
-
-class Run : public QObject
+typedef
+struct infoRun
 {
+    QDate date;
+    QTime chrono;
+    Level level;
+    Joueur joueur;
+} infoRun;
+
+
+
+class Run :public QAbstractListModel
+{
+    Q_OBJECT
 public:
-    Run(Joueur joueur, Level level);
+    Run();
+
+    int rowCount(const QModelIndex & /* parent */) const override;
+    QVariant data(const QModelIndex &index, int role) const override;
+
+
 private:
 
     QTime _chrono;
     Joueur * _joueur;
     Level * _level;
     QDateTime _date;
+    int count;
+    QList<QString> itemList;
+    QList<infoRun> info;
+
 public:
     // Doit pouvoir lancer un run, et si on le souhaite en comparant à un autre (QTimer)
-    QProcess* startRun(QString GamePath);
+   // QProcess* startRun(QString GamePath);
 
-    void stopRun();
+public slots:
+    void startRun(QString currentPath);
 
-    void drapeau();
+signals:
+
 };
 
 #endif // RUN_H

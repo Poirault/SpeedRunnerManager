@@ -31,10 +31,8 @@ SOURCES += \
     run.cpp \
     jeu.cpp \
     level.cpp \
-    nation.cpp \
-    notification.cpp \
     display.cpp \
-    classement.cpp
+
 
 
 HEADERS += \
@@ -43,10 +41,8 @@ HEADERS += \
     run.h \
     jeu.h \
     level.h \
-    nation.h \
-    notification.h \
     display.h \
-    classement.h
+
 
 
 FORMS += \
