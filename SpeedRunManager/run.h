@@ -37,13 +37,15 @@ public:
 
 private:
 
-    QTime _chrono;
+    QTime* _chrono;
     Joueur * _joueur;
     Level * _level;
     QDateTime _date;
     int count;
     QList<QString> itemList;
     QList<infoRun> info;
+    QProcess* game;
+
 
 public:
     // Doit pouvoir lancer un run, et si on le souhaite en comparant à un autre (QTimer)
@@ -51,6 +53,7 @@ public:
 
 public slots:
     void startRun(QString currentPath);
+    void chrono();
 
 signals:
 

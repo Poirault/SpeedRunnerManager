@@ -27,4 +27,11 @@ QVariant Level::data(const QModelIndex &index, int role)const
     return QVariant();
 }
 
-void Level::newlevel(){}
+void Level::newlevel(QString text){
+    if(text!= "" && !itemList.contains(text)){
+        QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
+        itemList.append(text);
+        count++;
+        QAbstractListModel::endInsertRows();
+    }
+}

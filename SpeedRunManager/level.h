@@ -12,6 +12,7 @@
 
 class Level:public QAbstractListModel
 {
+    Q_OBJECT
 public:
     Level();
     QString nom;
@@ -24,7 +25,7 @@ public:
     int rowCount(const QModelIndex & /* parent */) const override;
     QVariant data(const QModelIndex &index, int role) const override;
 public slots:
-    void newlevel();
+    void newlevel(QString text);
 
 
 };

@@ -4,15 +4,14 @@
 #include <QFileDialog>
 #include "jeu.h"
 #include "run.h"
-#include "nation.h"
 #include "level.h"
 #include <QPushButton>
 #include <QTabWidget>
 #include <QSortFilterProxyModel>
 #include <QAbstractTableModel>
+#include <QAbstractListModel>
 #include <QTableView>
 #include <QHeaderView>
-#include "bibliotheque.h"
 #include <QHBoxLayout>
 #include <QFormLayout>
 #include <QLabel>
@@ -28,13 +27,14 @@ public:
     Display(QWidget* parent =0);
 
 public slots:
-    void newPseudo();
-    void newlevel();
+    void newInfoGame();
     void selectGame(QModelIndex selection);
 
 signals:
     void sendPath(QString name);
     void selectionChanged (const QItemSelection &selected);
+    void sendPseudo(QString text);
+    void sendLevel(QString text);
 
 private:
     QTabWidget* tab;
@@ -54,6 +54,8 @@ private:
     QFormLayout* layout;
     QScrollArea* pickGame;
     QListView* list;
+    QLineEdit* pseu;
+    QLineEdit* lev;
 };
 
 #endif // DISPLAY_H

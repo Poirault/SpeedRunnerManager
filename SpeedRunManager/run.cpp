@@ -3,6 +3,8 @@
 Run::Run()
 {
     count = 0;
+    _chrono= new QTime();
+    _chrono->start();
 }
 
 //QProcess* Run::startRun(QString GamePath){
@@ -39,4 +41,12 @@ void Run::startRun(QString currentPath){
     QAbstractListModel::endInsertRows();
     game = new QProcess(this);
     game->start(currentPath, QStringList() << "");
+    _chrono = new QTime();
+}
+
+void Run::chrono(){
+    QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
+        itemList.append(QString::number(_chrono->elapsed()));
+        count++;
+    QAbstractListModel::endInsertRows();
 }

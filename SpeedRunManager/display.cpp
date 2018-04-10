@@ -10,6 +10,8 @@ Display::Display(QWidget* parent)
     tab = new QTabWidget;
     Box = new QHBoxLayout;
     gameInfo = new QGroupBox;
+    pseu = new QLineEdit;
+    lev = new QLineEdit;
 
     Box->addWidget(gameInfo);
     Box->addWidget(tab);
@@ -20,8 +22,12 @@ Display::Display(QWidget* parent)
 }
 
 
-void Display::newPseudo(){}
-void Display::newlevel(){}
+void Display::newInfoGame(){
+    emit sendPseudo(pseu->text());
+    emit sendLevel(lev->text());
+}
+
+
 void Display::selectGame(QModelIndex selection){
     jeux->currentGame = selection.data().toString();
 }
@@ -34,6 +40,9 @@ void Display::setup()
     QObject::connect(addGame,SIGNAL(clicked(bool)),jeux,SLOT(addGame()));
     startGame = new QPushButton("Start Game");
     QObject::connect(startGame,SIGNAL(clicked(bool)),jeux,SLOT(startGame()));
+    QObject::connect(startGame,SIGNAL(clicked(bool)),this,SLOT(newInfoGame()));
+    QObject::connect(this,SIGNAL(sendLevel(QString)),levels,SLOT(newlevel(QString)));
+    QObject::connect(this,SIGNAL(sendPseudo(QString)),joueurs,SLOT(newPseudo(QString)));
     layout = new QFormLayout;
     pickGame = new QScrollArea;
     list = new QListView;
@@ -44,8 +53,8 @@ void Display::setup()
     QObject::connect(jeux,SIGNAL(sendPath(QString)),runs,SLOT(startRun(QString)));
     vbox->addWidget(pickGame);
     vbox->addWidget(addGame);
-    layout->addRow(new QLabel(tr("Pseudo")),new QLineEdit);
-    layout->addRow(new QLabel(tr("Level")),new QLineEdit);
+    layout->addRow(new QLabel(tr("Pseudo")),pseu);
+    layout->addRow(new QLabel(tr("Level")),lev);
     vbox->addLayout(layout);
     vbox->addWidget(startGame);
     gameInfo->setLayout(vbox);
@@ -76,16 +85,6 @@ void Display::setup()
         tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 
         tableView->setSortingEnabled(true);
-
-        //connect(tableView->selectionModel(),
-        //    &QItemSelectionModel::selectionChanged,
-        //    this, &Display::selectionChanged);
-
-        //connect(this, &QTabWidget::currentChanged, this, [this](int tabIndex) {
-        //    auto *tableView = qobject_cast<QTableView *>(widget(tabIndex));
-        //    if (tableView)
-        //        emit selectionChanged(tableView->selectionModel()->selection());
-        //});
 
         tab->addTab(tableView, str);
     }

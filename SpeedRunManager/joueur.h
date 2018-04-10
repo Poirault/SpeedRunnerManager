@@ -4,7 +4,6 @@
 #include <QObject>
 #include "jeu.h"
 #include <QDate>
-#include "nation.h"
 #include <QAbstractListModel>
 #include <QVariant>
 #include <QApplication>
@@ -13,6 +12,7 @@
 
 class Joueur : public QAbstractListModel
 {
+    Q_OBJECT
 public:
     Joueur();
     void rename(QString);
@@ -28,7 +28,7 @@ private:
     Jeu * jeu_prefere;
     QDate date_naissance;
 public slots:
-    void newPseudo();
+    void newPseudo(QString text);
 
 
 

@@ -43,4 +43,10 @@ QVariant Joueur::data(const QModelIndex &index, int role)const
     return QVariant();
 }
 
-void Joueur::newPseudo(){}
+void Joueur::newPseudo(QString text){
+    if(text != "" && !itemList.contains(text)){
+        QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
+        itemList.append(text);
+        count++;
+        QAbstractListModel::endInsertRows();
+    }}
