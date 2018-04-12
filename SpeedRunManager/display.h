@@ -25,6 +25,7 @@ class Display:public QDialog
     Q_OBJECT
 public:
     Display(QWidget* parent =0);
+    Run* runs;
 
 public slots:
     void newInfoGame();
@@ -35,6 +36,7 @@ signals:
     void selectionChanged (const QItemSelection &selected);
     void sendPseudo(QString text);
     void sendLevel(QString text);
+    void startRun(QString Player);
 
 private:
     QTabWidget* tab;
@@ -46,7 +48,7 @@ private:
     Jeu* jeux;
     Joueur* joueurs;
     Level* levels;
-    Run* runs;
+
 
     QVBoxLayout* vbox;
     QPushButton* addGame;

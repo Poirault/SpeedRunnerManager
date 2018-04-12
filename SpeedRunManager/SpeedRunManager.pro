@@ -7,6 +7,10 @@
 QT       += core gui
 QT       += widgets
 
+win32-msvc*{
+    LIBS += -luser32
+}
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SpeedRunManager
@@ -31,7 +35,7 @@ SOURCES += \
     run.cpp \
     jeu.cpp \
     level.cpp \
-    display.cpp \
+    display.cpp
 
 
 
@@ -41,7 +45,7 @@ HEADERS += \
     run.h \
     jeu.h \
     level.h \
-    display.h \
+    display.h
 
 
 
