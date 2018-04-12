@@ -19,16 +19,21 @@
 #include <QLineEdit>
 #include <QScrollArea>
 #include <QListView>
+#include <QShortcut>
 
 class Display:public QDialog
 {
     Q_OBJECT
 public:
     Display(QWidget* parent =0);
+    QShortcut* shcut;
+    Run* runs;
+
 
 public slots:
     void newInfoGame();
     void selectGame(QModelIndex selection);
+
 
 signals:
     void sendPath(QString name);
@@ -46,7 +51,7 @@ private:
     Jeu* jeux;
     Joueur* joueurs;
     Level* levels;
-    Run* runs;
+
 
     QVBoxLayout* vbox;
     QPushButton* addGame;

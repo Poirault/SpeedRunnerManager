@@ -32,6 +32,8 @@ SOURCES += \
     jeu.cpp \
     level.cpp \
     display.cpp \
+    application.cpp \
+    eventfilter.cpp
 
 
 
@@ -42,6 +44,8 @@ HEADERS += \
     jeu.h \
     level.h \
     display.h \
+    application.h \
+    eventfilter.h
 
 
 

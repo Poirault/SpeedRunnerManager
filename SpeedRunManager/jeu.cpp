@@ -75,7 +75,6 @@ void Jeu::suppGame(){
 }
 
 
-
 /*!
  * \brief Jeu::startGame slot
  */

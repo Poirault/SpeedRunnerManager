@@ -61,12 +61,14 @@ void Run::startRun(QString currentPath){
     QAbstractListModel::endInsertRows();
     game = new QProcess(this);
     game->start(currentPath, QStringList() << "");
-    _chrono = new QTime();
+
 }
 
-void Run::chrono(){
-    QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
-        itemList.append(QString::number(_chrono->elapsed()));
-        count++;
-    QAbstractListModel::endInsertRows();
+void Run::chrono(bool status){
+    if(status){
+        QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
+            itemList.append(QString::number(_chrono->elapsed()));
+            count++;
+        QAbstractListModel::endInsertRows();
+    }
 }

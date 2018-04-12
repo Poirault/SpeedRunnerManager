@@ -53,7 +53,7 @@ public:
 
 public slots:
     void startRun(QString currentPath);
-    void chrono();
+    void chrono(bool status);
 
 signals:
 

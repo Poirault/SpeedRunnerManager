@@ -21,6 +21,7 @@ Display::Display(QWidget* parent)
     gameInfo = new QGroupBox;
     pseu = new QLineEdit;
     lev = new QLineEdit;
+    shcut = new QShortcut(Qt::CTRL + Qt::Key_W,this, nullptr, nullptr,  Qt::ApplicationShortcut);
 
     Box->addWidget(gameInfo);
     Box->addWidget(tab);
@@ -69,6 +70,9 @@ void Display::setup()
     vbox->addLayout(layout);
     vbox->addWidget(startGame);
     gameInfo->setLayout(vbox);
+
+
+    QObject::connect(shcut,SIGNAL(activated()),runs,SLOT(chrono()));
 
 
     QStringList groups;

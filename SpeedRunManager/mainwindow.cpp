@@ -5,7 +5,7 @@ MainWindow::MainWindow()
 {
     display = new Display;
     setCentralWidget(display);
-
+    connect(qApp, SIGNAL(hotkey(bool)), display->runs, SLOT(chrono(bool)));
     setWindowTitle(tr("SpeedRunMannager"));
 }
 
