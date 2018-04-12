@@ -26,7 +26,6 @@ class Display:public QDialog
     Q_OBJECT
 public:
     Display(QWidget* parent =0);
-    QShortcut* shcut;
     Run* runs;
 
 
@@ -40,6 +39,7 @@ signals:
     void selectionChanged (const QItemSelection &selected);
     void sendPseudo(QString text);
     void sendLevel(QString text);
+    void startRun(QString Player);
 
 private:
     QTabWidget* tab;

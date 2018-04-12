@@ -9,41 +9,35 @@
 #include <QProcess>
 #include <QApplication>
 #include <QAbstractTableModel>
-#include <QAbstractListModel>
 #include <QVariant>
 #include <QApplication>
 #include <QPalette>
+#include <QPair>
+#include <QMessageBox>
 
-typedef
-struct infoRun
-{
-    QDate date;
-    QTime chrono;
-    Level level;
-    Joueur joueur;
-} infoRun;
+typedef QPair<QPair<QString, QString>, QList<QString>> Tuple;
 
-
-
-class Run :public QAbstractListModel
+class Run :public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    Run();
+    Run(QObject *parent=0);
 
-    int rowCount(const QModelIndex & /* parent */) const override;
-    QVariant data(const QModelIndex &index, int role) const override;
+    int rowCount(const QModelIndex &parent) const;
+     int columnCount(const QModelIndex &parent) const;
+     QVariant data(const QModelIndex &index, int role) const;
+     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+     Qt::ItemFlags flags(const QModelIndex &index) const;
+     bool setData(const QModelIndex &index, const QVariant &value, int role=Qt::EditRole);
+     bool insertRows(int position, int rows, const QModelIndex &index=QModelIndex());
+     bool removeRows(int position, int rows, const QModelIndex &index=QModelIndex());
+     QList<Tuple> getList();
 
 
 private:
 
     QTime* _chrono;
-    Joueur * _joueur;
-    Level * _level;
-    QDateTime _date;
-    int count;
-    QList<QString> itemList;
-    QList<infoRun> info;
+    QList<Tuple> itemList;
     QProcess* game;
 
 
@@ -52,8 +46,8 @@ public:
    // QProcess* startRun(QString GamePath);
 
 public slots:
-    void startRun(QString currentPath);
-    void chrono(bool status);
+    void startRun(QString Game,QString Player,QString currentPath);
+    void chrono();
 
 signals:
 

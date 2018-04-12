@@ -32,10 +32,10 @@ public:
 public slots:
     void addGame();
     void suppGame();
-    void startGame();
+    void startGame(QString Player);
 
 signals:
-    void sendPath(QString address);
+    void sendPath(QString Game,QString Player,QString Path);
     void selectionChanged (const QItemSelection &selected);
 };
 

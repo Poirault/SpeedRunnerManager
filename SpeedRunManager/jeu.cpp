@@ -75,13 +75,11 @@ void Jeu::suppGame(){
 }
 
 
-/*!
- * \brief Jeu::startGame slot
- */
-void Jeu::startGame(){
+
+void Jeu::startGame(QString Player){
     for (int i=0;i<info.count();i++){
         QPair<QString, QString> pair = info.at(i);
         if (pair.first == currentGame)
-            emit sendPath(pair.second);
+            emit sendPath(currentGame,Player,pair.second);
     }
 }

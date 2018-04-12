@@ -35,6 +35,7 @@ Display::Display(QWidget* parent)
 void Display::newInfoGame(){
     emit sendPseudo(pseu->text());
     emit sendLevel(lev->text());
+    emit startRun(pseu->text());
 }
 
 
@@ -51,10 +52,10 @@ void Display::setup()
     addGame = new QPushButton("Add a Game");
     QObject::connect(addGame,SIGNAL(clicked(bool)),jeux,SLOT(addGame()));
     startGame = new QPushButton("Start Game");
-    QObject::connect(startGame,SIGNAL(clicked(bool)),jeux,SLOT(startGame()));
     QObject::connect(startGame,SIGNAL(clicked(bool)),this,SLOT(newInfoGame()));
     QObject::connect(this,SIGNAL(sendLevel(QString)),levels,SLOT(newlevel(QString)));
     QObject::connect(this,SIGNAL(sendPseudo(QString)),joueurs,SLOT(newPseudo(QString)));
+    QObject::connect(this,SIGNAL(startRun(QString)),jeux,SLOT(startGame(QString)));
     layout = new QFormLayout;
     pickGame = new QScrollArea;
     list = new QListView;
@@ -62,7 +63,7 @@ void Display::setup()
     pickGame->setWidgetResizable(true);
     pickGame->setWidget(list);
     QObject::connect(list,SIGNAL(clicked(QModelIndex)),this,SLOT(selectGame(QModelIndex)));
-    QObject::connect(jeux,SIGNAL(sendPath(QString)),runs,SLOT(startRun(QString)));
+    QObject::connect(jeux,SIGNAL(sendPath(QString,QString,QString)),runs,SLOT(startRun(QString,QString,QString)));
     vbox->addWidget(pickGame);
     vbox->addWidget(addGame);
     layout->addRow(new QLabel(tr("Pseudo")),pseu);
