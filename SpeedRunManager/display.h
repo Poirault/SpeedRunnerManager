@@ -19,7 +19,6 @@
 #include <QLineEdit>
 #include <QScrollArea>
 #include <QListView>
-#include <QShortcut>
 
 class Display:public QDialog
 {
@@ -28,11 +27,9 @@ public:
     Display(QWidget* parent =0);
     Run* runs;
 
-
 public slots:
     void newInfoGame();
     void selectGame(QModelIndex selection);
-
 
 signals:
     void sendPath(QString name);

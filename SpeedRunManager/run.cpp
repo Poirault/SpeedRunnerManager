@@ -1,12 +1,8 @@
-/*!
- * \class Run run.h
- */
 #include "run.h"
 
 Run::Run(QObject *parent)
 : QAbstractTableModel(parent)
 {
-
 }
 
 //QProcess* Run::startRun(QString GamePath){
@@ -95,7 +91,7 @@ bool Run::setData(const QModelIndex &index, const QVariant &value, int role)
                  else if (index.column() == 1)
                          p.first.second = value.toString();
                  else if (index.column() == 2)
-                         p.second.append(value.toString());
+                         p.second.prepend(value.toString());
          else
              return false;
 
@@ -124,6 +120,9 @@ QList<Tuple> Run::getList()
 void Run::startRun(QString Game,QString Player,QString currentPath){
     game = new QProcess(this);
     game->start(currentPath, QStringList() << "");
+
+    _chrono = new QTime();
+
     QList<Tuple>list = this->getList();
 
     this->insertRows(0, 1, QModelIndex());
@@ -137,7 +136,7 @@ void Run::startRun(QString Game,QString Player,QString currentPath){
     index = this->index(0, 2, QModelIndex());
     this->setData(index, QTime(0,0,0).toString(), Qt::EditRole);
 
-    _chrono = new QTime();
+
 }
 
 bool Run::insertRows(int position, int rows, const QModelIndex &index)
@@ -155,4 +154,15 @@ bool Run::insertRows(int position, int rows, const QModelIndex &index)
  }
 
 void Run::chrono(){
+    QModelIndex index = this->index(0, 2, QModelIndex());
+    if(index.isValid()){
+        if(_chrono->isNull())
+            _chrono->start();
+        int all = _chrono->elapsed();
+        int mili = all % 1000;
+        int second = (all / 1000) % 60;
+        int minute = all / 60000 ;
+        QString time = QString::number(minute) + ":" + QString::number(second) + ":" + QString::number(mili);
+        this->setData(index, time, Qt::EditRole);
+    }
 }

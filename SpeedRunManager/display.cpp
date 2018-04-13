@@ -1,14 +1,5 @@
-/*!
- * \class Display display.h
- * \brief gére l'affichage et le model
- */
 #include "display.h"
 
-
-/*!
- * \brief Display::Display constucteur de base
- * \param parent
- */
 Display::Display(QWidget* parent)
     : QDialog(parent)
 {
@@ -21,7 +12,6 @@ Display::Display(QWidget* parent)
     gameInfo = new QGroupBox;
     pseu = new QLineEdit;
     lev = new QLineEdit;
-    shcut = new QShortcut(Qt::CTRL + Qt::Key_W,this, nullptr, nullptr,  Qt::ApplicationShortcut);
 
     Box->addWidget(gameInfo);
     Box->addWidget(tab);
@@ -43,9 +33,7 @@ void Display::selectGame(QModelIndex selection){
     jeux->currentGame = selection.data().toString();
 }
 
-/*!
- * \brief Display::setup 
- */
+
 void Display::setup()
 {
     vbox = new QVBoxLayout;
@@ -71,9 +59,6 @@ void Display::setup()
     vbox->addLayout(layout);
     vbox->addWidget(startGame);
     gameInfo->setLayout(vbox);
-
-
-    QObject::connect(shcut,SIGNAL(activated()),runs,SLOT(chrono()));
 
 
     QStringList groups;
