@@ -5,7 +5,6 @@ MainWindow::MainWindow()
 {
     display = new Display;
     setCentralWidget(display);
-    connect(qApp, SIGNAL(hotkey(bool)), display->runs, SLOT(chrono(bool)));
     setWindowTitle(tr("SpeedRunMannager"));
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setIcon(this->style()->standardIcon(QStyle::SP_ComputerIcon));
