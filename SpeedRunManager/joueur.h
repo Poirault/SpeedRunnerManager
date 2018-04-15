@@ -18,7 +18,6 @@ public:
     void rename(QString);
     void newfavorite(Jeu);
     void rebirth(QDate);
-    int count;
     QStringList itemList;
 
     int rowCount(const QModelIndex & /* parent */) const override;

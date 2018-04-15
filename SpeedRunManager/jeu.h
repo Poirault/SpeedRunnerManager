@@ -22,7 +22,6 @@ class Jeu:public QAbstractListModel
     Q_OBJECT
 public:
     Jeu();
-    int count;
     QStringList itemList;
     QList<QPair <QString,QString>> info;
     QString currentGame;

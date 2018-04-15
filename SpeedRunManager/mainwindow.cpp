@@ -10,6 +10,14 @@ MainWindow::MainWindow()
     trayIcon->setIcon(this->style()->standardIcon(QStyle::SP_ComputerIcon));
     trayIcon->show();
 
+    file = menuBar()->addMenu(tr("&File"));
+    open = new QAction(tr("&Open"), this);
+    file->addAction(open);
+    connect(open, SIGNAL(triggered()),this, SLOT(openFile()));
+    save = new QAction(tr("&Save"), this);
+    file->addAction(save);
+    connect(save, SIGNAL(triggered()),this, SLOT(saveFile()));
+
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
     connect(this,SIGNAL(capture()),display->runs,SLOT(chrono()));
     RegisterHotKey((HWND)MainWindow::winId(),   // Set the system identifier of the widget window that will handle the HotKey
@@ -55,5 +63,22 @@ void MainWindow::updateActions(const QItemSelection &selection)
     QModelIndexList indexes = selection.indexes();
 }
 
+
+void MainWindow::openFile()
+{
+    QString fileName = QFileDialog::getOpenFileName(this);
+    if (!fileName.isEmpty()) {
+        display->load(fileName);
+    }
+}
+
+
+void MainWindow::saveFile()
+{
+    QString fileName = QFileDialog::getSaveFileName(this);
+    if (!fileName.isEmpty()) {
+        display->save(fileName);
+    }
+}
 
 

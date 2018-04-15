@@ -10,7 +10,6 @@
  */
 Joueur::Joueur()
 {
-    count = 0;
 }
 
 
@@ -32,7 +31,7 @@ void Joueur::rebirth(QDate birth){
  * \brief Joueur::rowCount
  * \return nombre de joueurs
  */
-int Joueur::rowCount(const QModelIndex & /* parent */)const{return count;}
+int Joueur::rowCount(const QModelIndex & /* parent */)const{return itemList.size();}
 
 /*!
  * \brief Joueur::data
@@ -61,9 +60,12 @@ QVariant Joueur::data(const QModelIndex &index, int role)const
 }
 
 void Joueur::newPseudo(QString text){
-    if(text != "" && !itemList.contains(text)){
-        QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
+    if(!itemList.contains(text)){
+        QAbstractListModel::beginInsertRows(QModelIndex(), itemList.size(),itemList.size() );
+
         itemList.append(text);
-        count++;
+
         QAbstractListModel::endInsertRows();
-    }}
+
+    }
+}

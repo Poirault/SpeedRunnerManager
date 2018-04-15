@@ -76,7 +76,7 @@ void Display::setup()
             tableView->setModel(levels);
         if( groups.at(i) == "Runs")
             tableView->setModel(runs);
-        if( groups.at(i) == "Player")
+        if( groups.at(i) == "Players")
             tableView->setModel(joueurs);
 
         tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -92,3 +92,54 @@ void Display::setup()
 }
 
 
+void Display::save(QString fileName)
+{
+    QFile file(fileName);
+
+    if (!file.open(QIODevice::WriteOnly)) {
+        QMessageBox::information(this, tr("Unable to open file"), file.errorString());
+        return;
+    }
+
+    QList<Tuple> tuple = runs->getList();
+    QDataStream out(&file);
+    out << tuple;
+}
+
+void Display::load(QString fileName)
+{
+    QFile file(fileName);
+
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::information(this, tr("Unable to open file"),
+            file.errorString());
+        return;
+    }
+
+   QList<Tuple> tuple = runs->getList();
+    QDataStream in(&file);
+    in >> tuple;
+
+    if (tuple.isEmpty()) {
+        QMessageBox::information(this, tr("No contacts in file"),
+            tr("The file you are attempting to open contains no contacts."));
+    } else {
+        for (int i=0; i<tuple.size(); ++i) {
+            Tuple p = tuple.at(i);
+            runs->insertRows(0, 1, QModelIndex());
+
+            QModelIndex index = runs->index(0, 0, QModelIndex());
+
+            index = runs->index(0, 0, QModelIndex());
+            runs->setData(index, p.first.first, Qt::EditRole);
+            index = runs->index(0, 1, QModelIndex());
+            runs->setData(index, p.first.second, Qt::EditRole);
+            index = runs->index(0, 2, QModelIndex());
+            emit sendPseudo(p.first.second);
+            for(int i =p.second.size()-1;i>=0;i--){
+                runs->setData(index, p.second.at(i), Qt::EditRole);
+
+            }
+        }
+    }
+}

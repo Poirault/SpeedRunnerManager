@@ -123,7 +123,7 @@ void Run::startRun(QString Game,QString Player,QString currentPath){
 
     _chrono = new QTime();
 
-    QList<Tuple>list = this->getList();
+
 
     this->insertRows(0, 1, QModelIndex());
 

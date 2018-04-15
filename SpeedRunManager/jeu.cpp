@@ -2,10 +2,9 @@
 
 Jeu::Jeu()
 {
-    count = 0;
 }
 
-int Jeu::rowCount(const QModelIndex & /* parent */)const{return this->count;}
+int Jeu::rowCount(const QModelIndex & /* parent */)const{return itemList.size();}
 QVariant Jeu::data(const QModelIndex &index, int role)const
 {
     if (!index.isValid())
@@ -34,9 +33,8 @@ void Jeu::addGame(){
     deb = Path.lastIndexOf("/");
     fin = Path.lastIndexOf(".");
     if(!(itemList.contains(Path.mid(deb+1,fin - deb - 1)))){
-        QAbstractListModel::beginInsertRows(QModelIndex(),count,count);
+        QAbstractListModel::beginInsertRows(QModelIndex(),itemList.size(),itemList.size());
         itemList.append(Path.mid(deb+1,fin - deb - 1));
-        count++;
         QAbstractListModel::endInsertRows();
         info.append(QPair<QString,QString>(Path.mid(deb+1,fin - deb - 1),Path));
     }

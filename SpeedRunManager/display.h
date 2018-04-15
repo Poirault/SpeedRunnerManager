@@ -19,6 +19,7 @@
 #include <QLineEdit>
 #include <QScrollArea>
 #include <QListView>
+#include <QDataStream>
 
 class Display:public QDialog
 {
@@ -26,6 +27,8 @@ class Display:public QDialog
 public:
     Display(QWidget* parent =0);
     Run* runs;
+    void save(QString fileName);
+    void load(QString fileName);
 
 public slots:
     void newInfoGame();

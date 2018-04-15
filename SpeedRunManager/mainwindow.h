@@ -25,6 +25,8 @@ protected:
 private slots:
     void updateActions(const QItemSelection &selection);
     void iconActivated(QSystemTrayIcon::ActivationReason reason);
+    void openFile();
+    void saveFile();
 
 signals:
     void capture();
@@ -32,6 +34,9 @@ signals:
 private:
     Display *display;
     QSystemTrayIcon *trayIcon;
+    QAction *open;
+    QAction *save;
+    QMenu *file;
 };
 
 #endif // MAINWINDOW_H
